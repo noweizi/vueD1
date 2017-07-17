@@ -1,0 +1,214 @@
+/*************** 初始化 ***************/
+body,h1,h2,h3,h4,h5,h6,p,form,ul,ol,li,dt,dl,dd,th,td,label,button,input,textarea{ margin:0;padding:0;box-sizing: border-box;}
+body{ font:.75rem "Microsoft Yahei", Helvetica;line-height:1.5;background:#f1f1f1;color:#000;-webkit-text-size-adjust:none;}
+h1,h2,h3,h4,h5,h6,button,input,select,textarea{ font:.75rem "Microsoft Yahei";}
+input,button{border:none;outline:none;-webkit-appearance: none;border-radius: 0;}
+::-webkit-input-placeholder { /* WebKit browsers */ color:#999;}
+fieldset,img{border:0;}
+img{vertical-align: top;}
+ul{list-style:none;}
+table{ border-collapse:collapse; border-spacing:0; width:100%;}
+strong{ font-weight:bold;}
+em,i{ font-style:normal;}
+sup{ vertical-align:text-top;}
+sub{ vertical-align:text-bottom;}
+.clear:after,.clear:before {display: block;clear: both;font-size: 0;height: 0;content: "";}
+.clear{zoom: 1;}
+a{
+    text-decoration:none;
+    color:#333;
+}
+.mt10{ margin-top:10px;}
+.ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*************** 通用部分 ***************/
+@import './mixin';
+.ui-mt48{ margin-top:48px;}
+//遮罩层
+.mask{
+	// display:none;
+	width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+//自定义单选框
+.sim-check{
+    display: inline-block;
+    line-height: 15px;
+    .radio {
+        display: inline-block;
+        position: relative;
+        top: 3px;
+        width: 15px;
+        height: 15px;
+        background-color: #fff;
+        border: 1px solid #cdcdcd;
+        border-radius: 3px;
+    }
+    .chk { 
+        display: none;
+        &:checked+span:after {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: '';
+            width: 15px;
+            height: 15px;
+            background:url("./assets/img/checked.png");
+        }
+    }
+}
+//tab 标签
+.tab{
+    @include flex;
+    text-align: center;
+    border-bottom: 1px  solid #eee;
+    background:#fff;
+    span{
+        display: inline-block;
+        @include flexbox;
+        height: 2rem;
+        line-height: 2rem;
+        overflow: hidden;
+    }
+}
+//表单
+.mod-form-item{
+    background: #fff;
+    border-top: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+    //默认左边留出15px的边距
+    &.space{
+        .item-unit{
+            margin-left: 15px;
+            .item-tit{ padding-left: 0}
+            &:last-child{ border-bottom: none;}
+            .icon{ right: 0;}
+        }
+    }
+    .item-tips{ padding-left: 15px;}
+    .item-unit{
+        @include flex;
+        font-size: 14px;
+        border-bottom: 1px solid #dedede;
+        overflow: hidden;
+        &:last-child{ border-bottom: none;}
+        .icon{
+            display: inline-block;
+            position:absolute;
+            right: 5px;
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            margin-top:-5px;
+            line-height: 1.5;
+            background: #f00;
+        }
+    }
+    //左标题
+    .item-tit{
+        width: 100px;
+        padding-left: 15px;
+        margin-right: 5px;
+        line-height: 46px;
+        &.full{ width: 100%;}
+    }
+    //详情
+    .item-con{
+        @include flexbox;
+        padding-right: 10px;
+        line-height: 46px;
+        min-height: 46px;
+        color: #666;
+        //多行文本 垂直居中
+        &.more{ line-height: 1.5;}
+        //文本超过一行
+        .more-text{
+            display: inline-block;
+            line-height: 1.5;
+        }
+    }
+    //输入框
+    .form-input {
+        display: inline-block;
+        width: 100%;
+        border:1px solid #ddd;
+        padding: 6px 0;
+        box-sizing: border-box;
+        &:focus{
+            border-color:#f00;
+        }
+        &.noborder{
+            border: 0;
+            outline: 0;
+            &:focus{
+              -webkit-tap-highlight-color:rgba(0,0,0,0);
+            }
+        }
+    }
+}
+//工具栏 -->底部
+.mod-toolbar{
+    @include flex
+    position:fixed;
+    left:0;
+    bottom:0;
+    width: 100%;
+    height:47px;
+    background: #fff;
+    a{ 
+        @include flexbox;
+        text-align: center;
+        color: #333;
+        border-top:1px solid #ddd;
+        &.on{
+            color: #42b983;
+        }
+    }
+    .btn{
+        @include flexbox;
+        @include btn;
+        border-left:none;
+        border-right:none;
+        &.blue{
+            color: #fff;
+            background:#3190e8;
+            border-bottom: 1px solid #3190e8;
+        }
+    }
+}
+//禁止body随着弹窗滚动而滚动
+.no-scroll {
+    overflow: hidden; 
+}
+//返回到顶部
+.return {
+    display: none;
+    position: fixed;
+    right: 15px;
+    bottom: 80px;
+    @include wh(40px,40px);
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #dcdcdc;
+    border-radius: 100%;
+    background: #fff;
+    z-index: 10;
+    i {
+      display: inline-block;
+      @include sc(24px,#333)
+    }
+}
+.ui-btn{
+    @include btn;
+}

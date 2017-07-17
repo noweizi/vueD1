@@ -1,0 +1,120 @@
+$blue: #3190e8;  
+$bc: #e4e4e4;
+$fc:#fff;
+
+// 背景图片地址和大小
+@mixin bis($url) { 
+	background-image: url($url);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+@mixin borderRadius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+//定位全屏
+@mixin allcover{
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+//定位上下左右居中
+@mixin center {  
+	position: absolute;
+	top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+//定位上下居中
+@mixin ct {  
+	position: absolute;
+	top: 50%;
+    transform: translateY(-50%);
+}
+
+//定位上下居中
+@mixin cl {  
+	position: absolute;
+	left: 50%;
+    transform: translateX(-50%);
+}
+
+//宽高
+@mixin wh($width, $height){
+	width: $width;
+	height: $height;
+}
+
+//字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'Microsoft YaHei') {  
+	font: #{$size}/#{$line-height} $family;
+}
+
+//字体大小，颜色
+@mixin sc($size, $color){
+	font-size: $size;
+	color: $color;
+}
+
+//flex 布局和 子元素 对其方式
+@mixin fj($type: space-between){
+	display: flex;
+	justify-content: $type;
+
+}
+// 按钮组
+@mixin btn($ft: .8rem, $h: 2rem, $pd: 1rem ,$bgcl:#fff ,$cl:#333){
+    display: inline-block;
+    font-size: $ft;
+    color: $cl;
+    height: $h;
+    line-height: $h;
+    background: $bgcl;
+    border: 1px solid #ddd;
+    padding-left: $pd;
+    padding-right: $pd;
+    border-radius:2px;
+    text-decoration: none;
+    text-align: center;
+}
+@mixin flex{
+    display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box; /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox; /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+    -webkit-box-orient:vertical;
+}
+@mixin flexbox($num:1){
+    -moz-box-flex: $num;
+    -webkit-box-flex: $num;
+    box-flex: $num;
+    flex: $num;
+}
+@mixin flexgrow($grow:1){
+    -moz-flex-grow: $grow;
+    -webkit-flex-grow: $grow;
+    flex-grow: $grow;
+}
+//单行文本溢出显示省略号
+@mixin ellipsisI{
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+//多行文本溢出显示省略号
+@mixin ellipsis-mult($num:2){
+    overflow:hidden;
+    display:-webkit-box; //设置或检索伸缩盒对象的子元素的排列方式。
+    -webkit-box-orient:vertical;
+    -moz-box-orient:horizontal;
+    -ms-box-orient:horizontal;
+    -webkit-line-clamp:$num; //块元素显示的文本的行数。 Chrome
+    text-overflow:ellipsis;
+}
