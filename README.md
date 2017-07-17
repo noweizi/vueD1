@@ -1,6 +1,6 @@
 # vue-demo
 
-> test
+> test2
 
 ## Build Setup
 
